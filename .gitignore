@@ -1,0 +1,16 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Exculde all .tfvars files, which contain sentitive data
+*.tfvars
+
+# Ignore CLI configurations files
+.terraformrc
+terraform.rc
+
+# Ignore MAC/OSX system file, with folder metadata
+.DS_Store
