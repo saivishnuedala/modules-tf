@@ -13,9 +13,6 @@ variable "private_cidrs" {
 }
 
 variable "environment" {
-  description = "dev env"
-}
-
-variable "availability_zones" {
-
+  description = "Enter Environment Name"
+  type = string
 }

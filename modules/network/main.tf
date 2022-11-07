@@ -1,3 +1,4 @@
+data "aws_availability_zones" "available" {}
 # VPC Creation
 resource "aws_vpc" "play" {
   cidr_block           = var.vpc_cidr
@@ -14,10 +15,11 @@ resource "aws_subnet" "public_subnet" {
   cidr_block              = var.public_cidrs[count.index]
   vpc_id                  = aws_vpc.play.id
   map_public_ip_on_launch = true
-  # availability_zone       = var.availability_zones #data.aws_availability_zones.available.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
 
   tags = {
     Name = "${var.environment}-pub-subnet.${count.index + 1}"
+    Tier = "Public"
   }
 }
 
@@ -26,10 +28,11 @@ resource "aws_subnet" "private_subnet" {
   count      = length(var.private_cidrs)
   cidr_block = var.private_cidrs[count.index]
   vpc_id     = aws_vpc.play.id
-  # availability_zone = var.availability_zones #data.aws_availability_zones.available.names[count.index]
+  availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
     Name = "${var.environment}-pri-subnet.${count.index + 1}"
+    Tier  = "Private"
   }
 }
 

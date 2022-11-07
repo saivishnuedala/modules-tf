@@ -8,7 +8,7 @@ variable "environment" {
 
 variable "subnet_id" {
   description = "VPC Subnet ID's to launch in"
-  type        = string
+  type        = any
 }
 
 variable "security_group_ids" {

@@ -15,7 +15,7 @@ resource "aws_instance" "proj" {
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = var.security_group_ids
   associate_public_ip_address = true
-  availability_zones          = var.availability_zones
+  availability_zone          = var.availability_zones
   user_data = file("${path.module}/server-script.sh")
 
   tags = {

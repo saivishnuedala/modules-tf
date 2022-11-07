@@ -1,6 +1,10 @@
+output "vpc_id" {
+  description = "VPC ID"
+  value = aws_vpc.play.id
+}
 output "public_cidrs" {
   description = "Public subnet CIDR's"
-  value       = toset(aws_subnet.public_subnet[*].id)
+  value       = aws_subnet.public_subnet[*].id
 }
 
 output "private_cidrs" {
