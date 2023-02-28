@@ -14,3 +14,4 @@ terraform.rc
 
 # Ignore MAC/OSX system file, with folder metadata
 .DS_Store
+Azure-RKE-VM-Creation.sh
