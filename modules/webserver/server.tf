@@ -16,6 +16,7 @@ resource "aws_instance" "proj" {
   vpc_security_group_ids      = var.security_group_ids
   associate_public_ip_address = true
   availability_zone          = var.availability_zones
+  iam_instance_profile = var.iam_instance_profile
   user_data = file("${path.module}/server-script.sh")
 
   tags = {

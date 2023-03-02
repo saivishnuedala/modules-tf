@@ -3,7 +3,7 @@ variable "instance_type" {
 }
 
 variable "environment" {
-  description = "dev env"
+  description = "dev"
 }
 
 variable "subnet_id" {
@@ -20,3 +20,4 @@ variable "availability_zones" {
   description = "AZ to start the instance in"
   type        = string
 }
+ variable "iam_instance_profile" { }

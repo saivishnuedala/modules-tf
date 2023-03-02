@@ -1,4 +1,4 @@
 variable "environment" {
-    description = "Enter Environment Name"
-    default = "dev"
+  description = "env name"
+  default     = "dev"
 }

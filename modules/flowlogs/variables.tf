@@ -1,9 +1,7 @@
-variable "aws_s3_bucket" {
+variable "bucket_id" {
   description = "S3 bucket"
-  type        = any
 }
 
-variable "aws_vpc" {
+variable "vpc_id" {
     description = "VPC for flowlogs"
-    type = any
 }
