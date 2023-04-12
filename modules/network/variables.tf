@@ -4,12 +4,12 @@ variable "vpc_cidr" {
 
 variable "public_cidrs" {
   type    = list(string)
-  default = ["10.35.1.0/24", "10.35.2.0/24"]
+  default = ["10.35.1.0/24", "10.35.2.0/24", "10.35.3.0/24"]
 }
 
 variable "private_cidrs" {
   type    = list(string)
-  default = ["10.35.30.0/24", "10.35.40.0/24"]
+  default = ["10.35.30.0/24", "10.35.40.0/24", "10.35.50.0/24"]
 }
 
 variable "environment" {

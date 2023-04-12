@@ -12,13 +12,14 @@ resource "aws_vpc" "play" {
 # Public Subnet
 resource "aws_subnet" "public_subnet" {
   count                   = length(var.public_cidrs)
-  cidr_block              = var.public_cidrs[count.index]
+  # cidr_block              = var.public_cidrs[count.index]
+  cidr_block = element(var.public_cidrs, count.index)
   vpc_id                  = aws_vpc.play.id
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
 
   tags = {
-    Name = "${var.environment}-pub-subnet.${count.index + 1}"
+    Name = "${var.environment}-pub-subnet-${count.index + 1}"
     Tier = "Public"
   }
 }
@@ -31,7 +32,7 @@ resource "aws_subnet" "private_subnet" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
-    Name = "${var.environment}-pri-subnet.${count.index + 1}"
+    Name = "${var.environment}-pri-subnet-${count.index + 1}"
     Tier  = "Private"
   }
 }
@@ -55,7 +56,7 @@ resource "aws_route_table" "public_route" {
   }
 
   tags = {
-    Name = "${var.environment}-rt-pub"
+    Name = "${var.environment}-rt-pubic"
   }
 }
 
@@ -69,7 +70,7 @@ resource "aws_route_table" "private_route" {
   }
 
   tags = {
-    Name = "${var.environment}-rt-pri"
+    Name = "${var.environment}-rt-private"
   }
 }
 
