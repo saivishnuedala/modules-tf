@@ -22,7 +22,7 @@ resource "null_resource" "public_server" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("LaptopKey.pem")
+      private_key = file("nginx.pem")
       host        = aws_instance.web-1.0.public_ip
     }
   }
