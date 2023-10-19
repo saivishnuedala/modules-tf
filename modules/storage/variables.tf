@@ -1,3 +1,3 @@
 variable "bucket_name" {
-  default = "flowlogtf"
+  default = "flowlogtf-backend"
 }

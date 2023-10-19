@@ -2,7 +2,8 @@ terraform {
   backend "s3" {
     region  = "us-east-1"
     encrypt = true
-    bucket  = "tf-backend-bucket23" #change bucket name
+    bucket  = "tfbackendstore" #change bucket_name
     key     = "dev/terraform.tfstate"
-  }
+    dynamodb_table = "tfstatelock"
+  }  
 }
