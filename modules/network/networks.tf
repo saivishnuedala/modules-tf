@@ -25,12 +25,12 @@ resource "aws_vpc" "play" {
 # }
 
 resource "aws_subnet" "public_subnet" {
-    for_each = var.public_cidrs
+  for_each = var.public_cidrs
 
   cidr_block        = each.value.cidr_block
   availability_zone = each.value.availability_zone
   vpc_id            = aws_vpc.play.id
-    # availability_zone = data.aws_availability_zones.available.names[count.index]
+  # availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
     Name = "${var.environment}-pub-subnet"
@@ -40,14 +40,14 @@ resource "aws_subnet" "public_subnet" {
 
 # Private Subnet
 resource "aws_subnet" "private_subnet" {
-  count      = length(var.private_cidrs)
-  cidr_block = var.private_cidrs[count.index]
-  vpc_id     = aws_vpc.play.id
+  count             = length(var.private_cidrs)
+  cidr_block        = var.private_cidrs[count.index]
+  vpc_id            = aws_vpc.play.id
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
     Name = "${var.environment}-pri-subnet-${count.index + 1}"
-    Tier  = "Private"
+    Tier = "Private"
   }
 }
 

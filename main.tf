@@ -21,7 +21,7 @@ module "my_vpc_module" {
 module "my_server_module_2" {
   depends_on = [
     module.my_vpc_module,
-    module.ec2_role_module
+    # module.ec2_role_module
   ]
   count                = length(module.my_vpc_module.public_cidrs)
   source               = "./modules/webserver"
@@ -32,10 +32,10 @@ module "my_server_module_2" {
   iam_instance_profile = module.ec2_role_module.instanceprofilename
 }
 
-# S3 module
-module "s3_module" {
-  source = "./modules/storage"
-}
+# # S3 module
+# module "s3_module" {
+#   source = "./modules/storage"
+# }
 
 # Flowlogs for vpc
 # module "flowlog_module" {
